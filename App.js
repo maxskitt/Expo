@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {PersistGate} from "redux-persist/integration/react";
+import {Provider} from "react-redux";
+import store from "./src/redux/store";
+import {persistStore} from "redux-persist";
+import MyStack from "./src/components/stack";
+import {NavigationContainer} from "@react-navigation/native";
+import {Text} from "react-native";
+
+let persistor = persistStore(store);
+
+const linking = {
+  prefixes: [
+    'https://mychat.com', 'mychat://'
+  ],
+  config: {
+    /* configuration for matching screens with paths */
+  },
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
+          <MyStack/>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
