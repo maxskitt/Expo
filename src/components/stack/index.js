@@ -1,30 +1,26 @@
 import React from 'react';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import HomeScreen from "../home";
-import NotificationsScreen from "../notifications";
-import ProfileScreen from "../profile";
-import SettingsScreen from "../settings";
-import SignInScreen from "../signIn";
-import SignUpScreen from "../signUp";
+import ArticlesScreen from "../home";
+import NewScreen from "../articles/new";
+import EditScreen from "../articles/edit";
 
 const Stack = createNativeStackNavigator();
 
 function MyStack() {
 
-  let isSignedIn = false;
+  let isSignedIn = true;
 
   return (
     isSignedIn ? (
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Notifications" component={NotificationsScreen}/>
-        <Stack.Screen name="Profile" component={ProfileScreen}/>
-        <Stack.Screen name="Settings" component={SettingsScreen}/>
+        <Stack.Screen name="Articles" component={ArticlesScreen}/>
+        <Stack.Screen name="New" component={NewScreen}/>
+        <Stack.Screen name="Edit" component={EditScreen}/>
       </Stack.Navigator>
     ) : (
       <Stack.Navigator>
-        <Stack.Screen name="SignIn" component={SignInScreen}/>
-        <Stack.Screen name="SignUp" component={SignUpScreen}/>
+        {/*<Stack.Screen name="SignIn" component={SignInScreen}/>*/}
+        {/*<Stack.Screen name="SignUp" component={SignUpScreen}/>*/}
       </Stack.Navigator>
     )
   );

@@ -1,28 +1,53 @@
-import React, {useEffect} from 'react';
+import React, {useMemo, useEffect} from 'react';
 import {Button, View} from "react-native";
 import map from 'lodash/map'
 import {useDispatch, useSelector} from "react-redux";
-import {usersRequested} from "../../redux/slices/users";
 import {Link} from '@react-navigation/native';
+import {articlesRequested} from "../../redux/slices/articles";
+import styles from "./style";
 
-function HomeScreen({navigation}) {
+function ArticlesScreen({navigation}) {
 
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users.collection.data);
+  const articles = useSelector((state) => state.articles.collection);
+
+  const displayArticles = useMemo(() =>
+    map(articles, (article, index) =>
+      <Link
+        style={styles.title}
+        key={index}
+        to={{screen: 'Edit', params: {id: article.id}}}
+      >
+        {article.title}
+      </Link>
+    )
+
+  , [articles])
 
   useEffect(() => {
-    dispatch(usersRequested());
+    dispatch(articlesRequested());
   }, [dispatch]);
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'top'}}>
+    <View style={styles.container}>
       <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
+        title="New articles"
+
+        onPress={() => navigation.navigate('New')}
       />
-      {map(users, (user, index) =><Link key={index} to={{screen: 'Profile', params: {id: user.id}}}>{user.name}</Link>)}
+      {displayArticles}
+      <View style={styles.containerButton}>
+        <Button
+          title="Next"
+          onPress={() => {articlesRequested()}}
+        />
+        <Button
+          title="Prev"
+          onPress={() => {}}
+        />
+      </View>
     </View>
   );
 }
 
-export default HomeScreen;
+export default ArticlesScreen;

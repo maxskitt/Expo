@@ -1,15 +1,15 @@
-import axios from "axios";
+import firebase from 'firebase';
 
-const serverUrl = "https://jsonplaceholder.typicode.com";
+const firebaseConfig = {
+  apiKey: "AIzaSyDpQQ2taggSJjFXC1fQNxwS1klFYwH7mA0",
+  authDomain: "new-articles-524da.firebaseapp.com",
+  projectId: "new-articles-524da",
+};
 
-const axiosClient = () => {
-  const instance = axios.create({
-    responseType: "JSON",
-    baseURL: serverUrl,
-    // headers: headers(),
-  });
-
-  return instance
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 }
 
-export { axiosClient };
+const db = firebase.firestore();
+
+export {db};

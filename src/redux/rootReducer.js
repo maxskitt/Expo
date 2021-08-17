@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import users from "./slices/users";
+import articles from "./slices/articles";
 import { persistReducer } from "redux-persist";
+import { reducer as formReducer } from 'redux-form';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
@@ -9,5 +10,6 @@ const persistConfig = {
 };
 
 export default combineReducers({
-  users: persistReducer(persistConfig, users),
+  articles: persistReducer(persistConfig, articles),
+  form: persistReducer(persistConfig, formReducer),
 })
