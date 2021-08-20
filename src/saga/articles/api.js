@@ -4,21 +4,27 @@ import {db} from "../api";
 const docRef = db.collection("articles");
 
 function fetchArticles(action) {
-  return docRef.limit(5).get().then((querySnapshot) => {
+
+  let size
+
+  docRef.get().then(snap => {
+    size = snap.size
+  });
+
+  return docRef.limit(5 * action).get().then((documentSnapshots) => {
     let arr = []
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+
+    documentSnapshots.forEach((doc) => {
       arr.push({...{id: doc.id}, ...doc.data()});
     });
-    return arr;
+    return {arr, size};
   });
 }
 
 function initialArticles(router) {
   return docRef.doc(router).get().then((doc) => {
     if (doc.exists) {
-      return doc.data()
+      return doc.data();
     } else {
       console.log("No such document!");
     }
@@ -43,7 +49,6 @@ function pushArticles(values) {
 }
 
 function updateArticles(values, router) {
-
   db.collection("articles").doc(router).update({
     name: values.name,
     title: values.title,
@@ -56,7 +61,6 @@ function updateArticles(values, router) {
 }
 
 function deleteArticles(router) {
-
   db.collection("articles").doc(router).delete().then(() => {
     console.log("Document successfully deleted!");
   }).catch((error) => {

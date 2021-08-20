@@ -3,7 +3,14 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
     alignItems: 'center',
+  },
+  containerLogo: {
+    flexDirection: "row",
+    marginTop: 16,
+    alignItems: 'center',
+    justifyContent: "space-between",
   },
   title: {
     width: 250,
@@ -19,8 +26,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   containerButton: {
-    flex: 1,
-  }
+    flexDirection: "row",
+    marginTop: 16,
+    alignItems: 'center',
+    justifyContent: "space-between",
+  },
+  tinyLogo: {
+    width: 30,
+    height: 30,
+  },
 });
 
 export default styles;

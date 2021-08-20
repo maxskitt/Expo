@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {ceil} from "lodash";
 
 const initialState = {
   collection: [],
-  meta: {},
   param: {
     page: 1,
     total: 1,
@@ -22,12 +22,21 @@ const slice = createSlice({
       state.loading = true
     },
     articlesSucceeded: (state, action) => {
-      state.collection = action.payload.articles
+      state.collection = action.payload.articles.arr
+      state.param.total = ceil(action.payload.articles.size / 5)
       state.loading = false
     },
     articlesFailed: (state, action) => {
       state.loading = false
       state.error = action.payload.error
+    },
+    articlesNext: (state, action) => {
+      state.loading = false
+      state.param.page++
+    },
+    articlesPrev: (state, action) => {
+      state.loading = false
+      state.param.page--
     },
   },
 });
@@ -37,15 +46,8 @@ export const {
   articlesRequested,
   articlesSucceeded,
   articlesFailed,
-
+  articlesNext,
+  articlesPrev
 } = slice.actions;
 
 export default slice.reducer;
-
-// state.param.total = ceil(action.payload.articles.pop() / 3)
-
-
-
-
-
-

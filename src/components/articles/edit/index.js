@@ -1,32 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useRoute} from '@react-navigation/native';
-import {initialArticles, updateArticles} from "../../../saga/articles/api";
-import isEmpty from "lodash/isEmpty";
+import {updateArticles} from "../../../saga/articles/api";
 import Form from "../index";
+import {useSelector} from "react-redux";
+import {find} from "lodash";
 
 function EditScreen() {
 
   const route = useRoute();
-  const [initialValues, setInitialValues] = useState({name: '33', title:'33', description:'ff'});
+  const articles = useSelector((state) => find(state.articles.collection, {id: route.params.id}));
+  const [initialValues] = useState(articles);
 
   const onSubmit = (values) => {
     console.log('EDIT values', values);
     updateArticles(values, route.params.id);
   }
 
-  async function initialArticlesAsync(router) {
-    let article = await initialArticles(router);
-  }
-
-  useEffect(() => {
-    if (!isEmpty(route.params.id)) {
-      // LOAD DATA FROM SERVER DB
-      initialArticlesAsync(route.params.id).then();
-    }
-  }, [route])
-
-  return ( <Form onSubmit={onSubmit} initialValues={initialValues} />
-
+  return (
+    <Form onSubmit={onSubmit} initialValues={initialValues}/>
   );
 }
 
