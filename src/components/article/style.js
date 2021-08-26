@@ -1,14 +1,66 @@
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
   containerButton: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between"
   },
+  jobSearch: {
+    fontFamily: 'SFProDisplayBold',
+    color: '#636363',
+    fontSize: 16,
+    textTransform: 'uppercase',
+    marginBottom: 10
+  },
+  searchInput: {
+    fontFamily: 'SFProDisplayRegular',
+    color: '#636363',
+    fontSize: 14,
+
+  },
+  searchInputContainer: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#EAEAEA',
+    borderRadius: 8,
+  },
   containerSearch: {
-    flex: 1,
-    // flexDirection: "row",
+    flexDirection: "row",
+    height: 50,
+  },
+  containerSearchBar: {
+    flex: 0.88,
+  },
+  containerSearchBarButton: {
+    flex: 0.12,
+    backgroundColor: "#FFC803",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  containerSort: {
+    marginTop: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  sortText: {
+    fontFamily: 'SFProDisplayBold',
+    color: '#636363',
+    fontSize: 14,
+  },
+  sortPosted: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  sortPostedText: {
+    fontFamily: 'SFProDisplayRegular',
+    color: '#636363',
+    fontSize: 14,
   }
 });
 

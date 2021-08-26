@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Text, View} from "react-native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import ArticlesScreen from "../../components/article";
 
 function Feed() {
   return (
@@ -22,9 +23,8 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Home" component={ArticlesScreen} />
     </Drawer.Navigator>
   );
 }

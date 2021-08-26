@@ -8,15 +8,16 @@ const styles = StyleSheet.create({
     borderColor: "#C4C4C4",
     borderRadius: 6,
     backgroundColor: "#FFFFFF",
+
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 4,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
 
-    elevation: 3,
+    elevation: 8,
   },
   containerArticles: {
     flex: 1,
