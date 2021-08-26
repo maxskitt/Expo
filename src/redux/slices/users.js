@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {concat} from "lodash";
+import {concat, remove} from "lodash";
 
 const initialState = {
   collection: [],
@@ -23,9 +23,10 @@ const slice = createSlice({
       state.loading = false
       state.error = action.payload.error
     },
-    usersClear: (state, action) => {
-      state.loading = false
-      return initialState
+    removeGradedCard: (state, action) => {
+       const { screenID } = action.payload;
+      // console.log(screenID, 'dsfds')
+      remove(state.collection, { screenID: screenID });
     },
   },
 });
@@ -35,7 +36,7 @@ export const {
   usersRequested,
   usersSucceeded,
   usersFailed,
-  usersClear
+  removeGradedCard
 } = slice.actions;
 
 export default slice.reducer;

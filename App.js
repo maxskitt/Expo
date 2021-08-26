@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {PersistGate} from "redux-persist/integration/react";
 import {Provider} from "react-redux";
 import store from "./src/redux/store";
@@ -6,13 +6,21 @@ import {persistStore} from "redux-persist";
 import MyStack from "./src/navigator";
 import {NavigationContainer} from "@react-navigation/native";
 import {Text} from "react-native";
-import {SafeAreaProvider} from "react-native-safe-area-view";
+import {useFonts} from "expo-font";
 
 let persistor = persistStore(store);
 
 export default function App() {
-  return (
-    <SafeAreaProvider>
+
+  const [loaded] = useFonts({
+    SFProDisplayBold: require('./assets/fonts/SFProDisplay-Bold.ttf'),
+    SFProDisplayRegular: require('./assets/fonts/SFProDisplay-Regular.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+    return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer fallback={<Text>Loading...</Text>}>
@@ -20,6 +28,5 @@ export default function App() {
           </NavigationContainer>
         </PersistGate>
       </Provider>
-    </SafeAreaProvider>
-  )
+    )
 }

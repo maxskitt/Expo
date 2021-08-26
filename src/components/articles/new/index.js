@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {pushArticles} from "../../../saga/articles/api";
 import Form from "../index";
 

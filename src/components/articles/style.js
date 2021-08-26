@@ -2,11 +2,11 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
+    flex: 0.7,
+    justifyContent: "center",
+    alignItems: "center"
   },
   title: {
-    marginTop: 16,
     fontSize: 16,
   },
   input: {

@@ -1,10 +1,12 @@
 import React, {useEffect, useMemo} from 'react';
-import {Text, View} from "react-native";
+import {Button, Text, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
-import {usersRequested} from "../../redux/slices/users";
+import {removeGradedCard, usersRequested} from "../../redux/slices/users";
 import map from "lodash/map";
+import globalStyles from "../../../styles/global";
 
-function UsersStackScreen() {
+function UsersScreen() {
+
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.collection);
 
@@ -16,18 +18,19 @@ function UsersStackScreen() {
     , [users])
 
   useEffect(() => {
-    dispatch(usersRequested('NaSjJ7uje68UinipYx4i'));
+    dispatch(usersRequested('jZG6hh5LcbKwsaNs59r3'));
   }, [dispatch]);
 
   return (
-    <View style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    <View style={globalStyles.container}>
+      <Text>Users config</Text>
       {displayUsers}
+      <Button
+        title="clearCard"
+        onPress={() => dispatch(removeGradedCard({screenID: '1'}))}
+      />
     </View>
   );
 }
 
-export default UsersStackScreen;
+export default UsersScreen;

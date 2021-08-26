@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, TouchableOpacity, View} from "react-native";
 import {Field, reduxForm} from 'redux-form';
 import renderInput from "../redux-form";
@@ -10,7 +10,6 @@ function Form(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Articles:</Text>
       <Field name="name" component={renderInput}/>
       <Field name="title" component={renderInput}/>
       <Field name="description" component={renderInput}/>

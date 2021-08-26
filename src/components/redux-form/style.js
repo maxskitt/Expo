@@ -1,6 +1,9 @@
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
+  container: {
+
+  },
   input: {
     width: 250,
     marginTop: 16,
