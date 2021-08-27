@@ -1,9 +1,13 @@
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
-  title: {
+  container: {
     flex: 1,
-    marginTop: 16,
+  },
+  title: {
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 16,
     paddingVertical: 8,
     borderColor: "#C4C4C4",
     borderRadius: 6,

@@ -7,7 +7,12 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={ArticlesScreen}/>
+      <HomeStack.Screen
+        name="Home"
+        component={ArticlesScreen}
+        options={{
+        }}
+      />
     </HomeStack.Navigator>
   );
 }

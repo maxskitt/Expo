@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    margin: 16,
   },
   containerButton: {
     flex: 1,
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SFProDisplayRegular',
     color: '#636363',
     fontSize: 14,
-
   },
   searchInputContainer: {
     paddingLeft: 10,
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
   },
   containerSearch: {
     flexDirection: "row",
+    marginBottom: 16,
     height: 50,
   },
   containerSearchBar: {
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   containerSort: {
-    marginTop: 15,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
@@ -61,7 +60,52 @@ const styles = StyleSheet.create({
     fontFamily: 'SFProDisplayRegular',
     color: '#636363',
     fontSize: 14,
+  },
+
+
+
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
   }
+
 });
 
 export default styles;
